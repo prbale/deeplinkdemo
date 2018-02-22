@@ -6,7 +6,7 @@ import android.net.Uri
 
 class UriToIntentMapper(private val mContext: Context, private val mIntents: IntentHelper) {
 
-    fun dispatchIntent(intent: Intent) {
+    fun dispatchIntent(intent: Intent, isLoginRequired: Boolean = true) {
         val uri = intent.data
         var dispatchIntent: Intent? = null
 
@@ -25,12 +25,13 @@ class UriToIntentMapper(private val mContext: Context, private val mIntents: Int
     }
 
     private fun mapAppLink(uri: Uri): Intent? = when (uri.host.toLowerCase()) {
-        "accounts" -> mIntents.newAccountsActivityIntent(mContext)
-        "secureinbox" -> mIntents.newSecureInboxActivityIntent(mContext, uri.getQueryParameter("query"))
-        "profile" -> mIntents.newProfileActivityIntent(mContext,
-                uri.getQueryParameter("query"),
-                Integer.parseInt(uri.getQueryParameter("choice")))
-        else -> null
+        "accounts"      -> mIntents.newAccountsActivityIntent(mContext)
+        "secureinbox"   -> mIntents.newSecureInboxActivityIntent(mContext,
+                            uri.getQueryParameter("query"))
+        "profile"       -> mIntents.newProfileActivityIntent(mContext,
+                            uri.getQueryParameter("query"),
+                            Integer.parseInt(uri.getQueryParameter("choice")))
+        else            -> null
     }
 
 }

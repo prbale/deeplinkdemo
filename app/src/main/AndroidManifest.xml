@@ -29,8 +29,7 @@
 
         <!-- Deep Link Activity -->
         <activity
-            android:name=".deeplinks.LinkDispatcherActivity"
-            android:noHistory="true"
+            android:name=".LinkDispatcherActivity"
             android:launchMode="singleInstance"
             android:theme="@android:style/Theme.NoDisplay" >
             <intent-filter>
