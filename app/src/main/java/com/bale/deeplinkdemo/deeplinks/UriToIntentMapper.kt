@@ -20,7 +20,11 @@ class UriToIntentMapper(private val mContext: Context, private val mIntents: Int
         }
 
         if (dispatchIntent != null) {
-            mContext.startActivity(dispatchIntent)
+            if(isLoginRequired) {
+                (mContext as LinkDispatcherActivity).startActivityForResult(mIntents.newLoginIntent(mContext, true), 111)
+            }
+            else
+                mContext.startActivity(dispatchIntent)
         }
     }
 

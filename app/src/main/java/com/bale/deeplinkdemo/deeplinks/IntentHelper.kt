@@ -3,6 +3,7 @@ package com.bale.deeplinkdemo.deeplinks
 import android.content.Context
 import android.content.Intent
 import com.bale.deeplinkdemo.AccountsActivity
+import com.bale.deeplinkdemo.LoginActivity
 import com.bale.deeplinkdemo.ProfileActivity
 import com.bale.deeplinkdemo.SecureInboxActivity
 
@@ -17,6 +18,13 @@ class IntentHelper {
     fun newAccountsActivityIntent(context: Context): Intent {
         val intent: Intent = Intent(context, AccountsActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        return intent
+    }
+
+    fun newLoginIntent(context: Context, isDeepLinkFlow: Boolean): Intent {
+        val intent: Intent = Intent(context, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.putExtra("IS_DEEP_LINK_FLOW", isDeepLinkFlow)
         return intent
     }
 

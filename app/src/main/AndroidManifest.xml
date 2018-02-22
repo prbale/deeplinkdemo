@@ -29,7 +29,7 @@
 
         <!-- Deep Link Activity -->
         <activity
-            android:name=".LinkDispatcherActivity"
+            android:name=".deeplinks.LinkDispatcherActivity"
             android:launchMode="singleInstance"
             android:theme="@android:style/Theme.NoDisplay" >
             <intent-filter>
