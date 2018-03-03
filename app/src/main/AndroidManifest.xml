@@ -24,7 +24,6 @@
         </activity>
         <activity android:name=".DashboardActivity" />
         <activity android:name=".AccountsActivity" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".SecureInboxActivity" />
 
         <!-- Deep Link Activity : Start -->

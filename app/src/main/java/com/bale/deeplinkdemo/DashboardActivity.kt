@@ -14,9 +14,7 @@ class DashboardActivity : AppCompatActivity() {
         secureInboxBtn.setOnClickListener {
             startActivity(Intent(this, SecureInboxActivity::class.java))
         }
-        profileBtn.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
+
         accountsBtn.setOnClickListener {
             startActivity(Intent(this, AccountsActivity::class.java))
         }

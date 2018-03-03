@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import com.bale.deeplinkdemo.AccountsActivity
-import com.bale.deeplinkdemo.ProfileActivity
 import com.bale.deeplinkdemo.SecureInboxActivity
 
 class UriToIntentMapper(private val mContext: Context) {
@@ -31,7 +30,6 @@ class UriToIntentMapper(private val mContext: Context) {
     private fun mapAppLink(uri: Uri): Intent? = when (uri.host.toLowerCase()) {
         "accounts"      -> deepLinkActivityIntent(mContext, uri, AccountsActivity::class.java)
         "secureinbox"   -> deepLinkActivityIntent(mContext, uri, SecureInboxActivity::class.java)
-        "profile"       -> deepLinkActivityIntent(mContext, uri, ProfileActivity::class.java)
         else            -> null
     }
 
