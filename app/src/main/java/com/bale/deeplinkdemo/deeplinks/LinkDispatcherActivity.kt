@@ -8,6 +8,13 @@ import android.widget.Toast
 import com.bale.deeplinkdemo.BuildConfig
 import com.bale.deeplinkdemo.DashboardActivity
 
+/**
+ * This activity will work as a "Controller" when deep linking comes into picture.
+ * Responsibilities:
+ *      1. Check whether application being invoked for proper host / scheme
+ *      2. Create required journey instance intent with all query parameters to intent.
+ *      3. Get the callback when journey terminated. Then launch the dashboard for normal usage.
+ */
 class LinkDispatcherActivity : AppCompatActivity() {
 
     private val mMapper = UriToIntentMapper(this)
