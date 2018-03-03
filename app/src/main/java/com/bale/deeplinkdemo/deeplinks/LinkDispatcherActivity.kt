@@ -6,17 +6,18 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
 import com.bale.deeplinkdemo.BuildConfig
+import com.bale.deeplinkdemo.DashboardActivity
 
 class LinkDispatcherActivity : AppCompatActivity() {
 
-    private val mMapper = UriToIntentMapper(this, IntentHelper())
-    private val loginRequest = 1111
+    private val mMapper = UriToIntentMapper(this)
+    private val deepLinkJourneyRequestCode = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         try {
-            mMapper.dispatchIntent(intent, true)
+            mMapper.dispatchIntent(intent)
         } catch (iae: IllegalArgumentException) {
             if (BuildConfig.DEBUG) {
                 Log.e("Deep links", "Invalid URI", iae)
@@ -28,13 +29,13 @@ class LinkDispatcherActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
         super.onActivityResult(requestCode, resultCode, data);
-
-        // check if the request code is same as what is passed  here it is 1
-        if (requestCode == loginRequest) {
-            Toast.makeText(this, "From Login", Toast.LENGTH_LONG).show()
+        if (requestCode == deepLinkJourneyRequestCode) {
+            Toast.makeText(this, "Journey Finished", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, DashboardActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
         }
-
     }
 }

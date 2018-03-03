@@ -27,21 +27,24 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SecureInboxActivity" />
 
-        <!-- Deep Link Activity -->
+        <!-- Deep Link Activity : Start -->
         <activity
             android:name=".deeplinks.LinkDispatcherActivity"
-            android:launchMode="singleInstance"
-            android:theme="@android:style/Theme.NoDisplay" >
+            android:alwaysRetainTaskState="true"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="example-scheme"/>
+                <data android:scheme="mobilebanking"/>
                 <data android:host="accounts"/>
                 <data android:host="secureinbox"/>
                 <data android:host="profile"/>
             </intent-filter>
         </activity>
+        <!-- Deep Link Activity : End -->
     </application>
 
 </manifest>
